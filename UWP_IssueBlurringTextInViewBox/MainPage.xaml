@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="UWP_IssueBlurringTextInViewBox.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_IssueBlurringTextInViewBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customtextblockcontrol="using:UWP_IssueBlurringTextInViewBox.CustomTextBlockControl"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <x:String x:Key="FSMillbankBold">/Assets/Fonts/FS Millbank Bold.otf#FS Millbank</x:String>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <local:MainViewModel />
+    </Page.DataContext>
+
+    <StackPanel Orientation="Horizontal">
+        <Grid Height="600" Width="600">
+            <controls:LayoutTransformControl  RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <controls:LayoutTransformControl.Transform>
+                    <RotateTransform Angle="270" />
+                </controls:LayoutTransformControl.Transform>
+                <Viewbox>
+                    <StackPanel Orientation="Vertical" Height="1080" Width="1000" Background="Yellow">
+                        <customtextblockcontrol:FadeInOutTextBlock Name="TextBlockNameA"
+                                                       Text="{Binding Name_A}"
+                                                       Margin="24,0,24,0"
+                                                       Sibling="{Binding ElementName=TextBlockNameB}"
+                                                       FontSize="44" />
+                        <customtextblockcontrol:FadeInOutTextBlock Name="TextBlockNameB"
+                                                       Text="{Binding Name_B}"
+                                                       Margin="24,0,24,0"
+                                                       Sibling="{Binding ElementName=TextBlockNameA}"
+                                                       FontSize="44" />
+                        <customtextblockcontrol:FadeInOutTextBlock Name="TextBlockNameA_2"
+                                                       Text="{Binding Name_A}"
+                                                       Margin="24,0,24,0"
+                                                       Sibling="{Binding ElementName=TextBlockNameB_2}"
+                                                                   FontFamily="{StaticResource FSMillbankBold}"
+                                                       FontSize="44" />
+                        <customtextblockcontrol:FadeInOutTextBlock Name="TextBlockNameB_2"
+                                                       Text="{Binding Name_B}"
+                                                       Margin="24,0,24,0"
+                                                       Sibling="{Binding ElementName=TextBlockNameA_2}"
+                                                                   FontFamily="{StaticResource FSMillbankBold}"
+                                                       FontSize="44" />
+                    </StackPanel>
+                </Viewbox>
+            </controls:LayoutTransformControl>
+
+        </Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock>Change texts here:</TextBlock>
+            <TextBlock>Name A:</TextBlock>
+            <TextBox Text="{Binding Name_A, Mode=TwoWay}"/>
+            <TextBlock>Name B:</TextBlock>
+            <TextBox Text="{Binding Name_B, Mode=TwoWay}"/>
+        </StackPanel>
+    </StackPanel>
+
+</Page>
