@@ -21,6 +21,7 @@
         <Grid Height="600" Width="600">
             <controls:LayoutTransformControl  RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <controls:LayoutTransformControl.Transform>
+                    <!-- Set it to 2 or 180 - all if fine. Set it to 90 or 270 you get blurring -->
                     <RotateTransform Angle="270" />
                 </controls:LayoutTransformControl.Transform>
                 <Viewbox>
